@@ -1,4 +1,4 @@
-name: Hello World
+name: variables
 on:
     workflow_dispatch:
     push:
