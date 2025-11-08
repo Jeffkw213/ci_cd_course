@@ -35,4 +35,4 @@ jobs:
         steps:
             - name: Environments
               run: |
-                  echo "This job runs in the dev environment. The variable from secrets is: $ENV_VAR"
+                  echo "This job runs in the $ENVIRONMENT environment. The variable from secrets is: $ENV_VAR"
