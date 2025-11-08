@@ -1,0 +1,27 @@
+name: Hello World
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+            - feature/*
+jobs:
+    variables_job:
+        runs-on: ubuntu-latest
+        name: Variables Job
+        env:
+            JOB_VAR: Hello World!
+        steps:
+            - name: Variables
+              run: |   
+                echo variable from env: $JOB_VAR
+    
+    secrets_job:
+        runs-on: ubuntu-latest
+        name: Secrets Job
+        env:
+            SECRET_VAR: ${{ secrets.SECRET_VAR }}
+        steps:
+            - name: Secrets
+              run: |
+                echo variable from secrets: $SECRET_VAR
