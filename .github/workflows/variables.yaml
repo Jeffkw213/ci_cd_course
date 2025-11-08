@@ -13,10 +13,10 @@ jobs:
             JOB_VAR: Hello World!
         steps:
             - name: Variables
-              run: |   
-                echo variable from env: $JOB_VAR
-    
-    secrets_job:
+              run: |
+                  echo variable from env: $JOB_VAR
+
+    secrets_job: #
         runs-on: ubuntu-latest
         name: Secrets Job
         env:
@@ -24,4 +24,15 @@ jobs:
         steps:
             - name: Secrets
               run: |
-                echo variable from secrets: $SECRET_VAR
+                  echo variable from secrets: $SECRET_VAR
+
+    envirnments_job:
+        runs-on: ubuntu-latest
+        name: Environments Job
+        environment: Dev
+        env:
+            ENV_VAR: ${{ secrets.SECRET_VAR }}
+        steps:
+            - name: Environments
+              run: |
+                  echo "This job runs in the dev environment. The variable from secrets is: $ENV_VAR"
