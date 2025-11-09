@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         name: Auto Organization
         env:
-            source: $GITHUB_WORKSPACE/deployment
+            source: /deployment
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
@@ -22,4 +22,4 @@ jobs:
             - name: Run Deployment Script
               run: |
                   echo "Running deployment script '$source'..."
-                  bash "$source/main.sh"
+                  bash "$GITHUB_WORKSPACE/$source/run.sh"
