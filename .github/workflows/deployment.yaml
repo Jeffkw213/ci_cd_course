@@ -5,17 +5,21 @@ on:
         branches:
             - main
             - feature/*
+
 jobs:
     auto_organization:
         runs-on: ubuntu-latest
         name: Auto Organization
         env:
-            source: "$GITHUB_WORKSPACE/deployment/"
+            source: "$GITHUB_WORKSPACE/deployment"
         steps:
-            - name: Auto Organization
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Auto Organization Message
+              run: echo "Auto Organization"
+
+            - name: Run Deployment Script
               run: |
-                  echo "Auto Organization"
-            - name: Auto Organization
-              run: |
-                  echo "Auto Organization"
-                  bash $source/main.sh
+                  echo "Running deployment script..."
+                  bash "$source/main.sh"
