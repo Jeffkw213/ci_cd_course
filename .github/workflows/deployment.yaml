@@ -1,0 +1,21 @@
+name: deployment
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+            - feature/*
+jobs:
+    auto_organization:
+        runs-on: ubuntu-latest
+        name: Auto Organization
+        env:
+            source: "$GITHUB_WORKSPACE/deployment/"
+        steps:
+            - name: Auto Organization
+              run: |
+                  echo "Auto Organization"
+            - name: Auto Organization
+              run: |
+                  echo "Auto Organization"
+                  bash $source/main.sh
