@@ -22,4 +22,4 @@ jobs:
             - name: Run Deployment Script
               run: |
                   echo "Running deployment script '$source'..."
-                  bash "$GITHUB_WORKSPACE/$source/run.sh"
+                  bash "$GITHUB_WORKSPACE/$source/main.sh"
