@@ -1,25 +1,25 @@
 name: deployment
 on:
-    workflow_dispatch:
-    push:
-        branches:
-            - main
-            - feature/*
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feature/*
 
 jobs:
-    auto_organization:
-        runs-on: ubuntu-latest
-        name: Auto Organization
-        env:
-            source: /deployment
-        steps:
-            - name: Checkout repo
-              uses: actions/checkout@v4
+  auto_organization:
+    runs-on: windows-latest
+    name: Auto Organization
+    env:
+      source: /deployment
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-            - name: Auto Organization Message
-              run: echo "Auto Organization"
+      - name: Auto Organization Message
+        run: echo "Auto Organization"
 
-            - name: Run Deployment Script
-              run: |
-                  echo "Running deployment script '$source'..."
-                  bash "$GITHUB_WORKSPACE/$source/main.sh"
+      - name: Run Deployment Script
+        run: |
+          echo "Running deployment script ..."
+          bash "$GITHUB_WORKSPACE/$source/main.ps1"
