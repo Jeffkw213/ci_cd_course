@@ -20,4 +20,6 @@ jobs:
       - name: Run Deployment Script
         run: |
           Write-Host "Running deployment script ..."
-          & "$GITHUB_WORKSPACE/deployment/main.ps1"
+          & "$Env:GITHUB_WORKSPACE\deployment\main.ps1"
+
+    
