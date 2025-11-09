@@ -10,8 +10,6 @@ jobs:
   auto_organization:
     runs-on: windows-latest
     name: Auto Organization
-    env:
-      source: /deployment
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -22,4 +20,4 @@ jobs:
       - name: Run Deployment Script
         run: |
           Write-Host "Running deployment script ..."
-          & "$GITHUB_WORKSPACE/$source/main.ps1"
+          & "$GITHUB_WORKSPACE/deployment/main.ps1"
