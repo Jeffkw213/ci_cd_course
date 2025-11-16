@@ -11,7 +11,8 @@ jobs:
     runs-on: windows-latest
     name: Auto Organization
     env:
-            JOB_VAR: Passing value
+        JOB_VAR: Passing value
+        SECRET_VAR: ${{secrets.SECRET_VAR}}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -22,7 +23,7 @@ jobs:
       - name: Run Deployment Script
         run: |
           Write-Host "Running deployment script ..."
-          & "$Env:GITHUB_WORKSPACE/deployment/main.ps1" -ParameterName "$Env:JOB_VAR" -SecretName "GITHUB_TOKEN"
+          & "$Env:GITHUB_WORKSPACE/deployment/main.ps1" -ParameterName "$JOB_VAR" -SecretName "$SECRET_VAR"
         shell: pwsh
 
     
