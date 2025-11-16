@@ -10,6 +10,8 @@ jobs:
   auto_organization:
     runs-on: windows-latest
     name: Auto Organization
+    env:
+            JOB_VAR: Passing value
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -20,6 +22,7 @@ jobs:
       - name: Run Deployment Script
         run: |
           Write-Host "Running deployment script ..."
-          & "$Env:GITHUB_WORKSPACE\deployment\main.ps1"
+          & "$Env:GITHUB_WORKSPACE\deployment\main.ps1 -ParameterName $Env:JOB_VAR"
+        shell: pwsh
 
     
