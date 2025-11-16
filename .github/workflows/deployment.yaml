@@ -1,0 +1,32 @@
+name: deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feature/*
+
+jobs:
+  auto_organization:
+    runs-on: windows-latest
+    name: Auto Organization
+
+    env:
+      JOB_VAR: Passing value                      # normal env variable
+      SECRET_VAR: ${{ secrets.SECRET_VAR }}       # GitHub secret
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Auto Organization Message
+        run: echo "Auto Organization"
+
+      - name: Run Deployment Script
+        shell: pwsh
+        run: |
+          Write-Host "Running deployment script ..."
+          & "$Env:GITHUB_WORKSPACE/deployment/main.ps1" `
+            -ParameterName "$Env:JOB_VAR" `
+            -SecretName "$Env:SECRET_VAR"
