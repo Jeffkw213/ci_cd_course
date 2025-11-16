@@ -22,7 +22,7 @@ jobs:
       - name: Run Deployment Script
         run: |
           Write-Host "Running deployment script ..."
-          & "$Env:GITHUB_WORKSPACE\deployment\main.ps1 -ParameterName $Env:JOB_VAR"
+          & "$Env:GITHUB_WORKSPACE/deployment/main.ps1" -ParameterName "$Env:JOB_VAR" -SecretName "GITHUB_TOKEN"
         shell: pwsh
 
     

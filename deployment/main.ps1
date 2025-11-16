@@ -3,9 +3,10 @@
 # Parameter help description
 param(
 [Parameter(Mandatory=$true)]
-[String] $ParameterName
+[String] $ParameterName,
+[String] $SecretName
 )
 Write-Host "Hello, World!"
 Write-Host "This is the deployment script for the CI/CD course"
 Write-Host "Passing Param is $ParameterName"
-Write-host "Secret is $env:SECRET"
+Write-Host "Passing SecretName is $SecretName"
